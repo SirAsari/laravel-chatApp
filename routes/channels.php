@@ -14,12 +14,6 @@ use App\Models\User;
 | used to check if an authenticated user can listen to the channel.
 |
 */
-
-Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+Broadcast::channel('chats.{chat}', function (User $user, Chat $chat) {
+    return $chat->isMember($user->id);
 });
-
-Broadcast::channel(
-    'chats.{chat}',
-    fn (User $user, Chat $chat): bool => $chat->isMember(1)
-);

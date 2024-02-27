@@ -15,6 +15,6 @@
         </div>
     </div>
 
-    <script src="/build/assets/app-DUK6SmU0.js"></script>
+    <script src="/build/assets/app-CR1iI5fN.js"></script>
 
 </x-app-layout>

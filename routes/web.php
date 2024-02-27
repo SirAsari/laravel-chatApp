@@ -7,6 +7,11 @@ use App\Events\PrivateMessageCreated;
 use App\Models\Chat;
 use App\Models\ChatMessage;
 
+// new ones
+use App\Events\WorkingMessage;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +23,19 @@ use App\Models\ChatMessage;
 |
 */
 
+// Actual chat app
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::post('/send-message', function (Request $request) {
+    event(new WorkingMessage($request->input('username'),
+    $request->input("message")));
+});
+
+// The rest are for testing out
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,7 +45,7 @@ Route::get('/messageCreated', function () {
 });
 
 Route::get('/PrivateMessageCreated', function () {
-    $chat = new Chat();
+    $chat = Chat::find(1);
     $chatMessage = new ChatMessage();
 
     PrivateMessageCreated::dispatch($chat, $chatMessage);

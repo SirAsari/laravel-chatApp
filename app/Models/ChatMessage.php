@@ -9,4 +9,5 @@ class ChatMessage extends Model
 {
     use HasFactory;
 
+    public $incrementing = true;
 }

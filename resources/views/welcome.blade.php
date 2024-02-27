@@ -130,6 +130,5 @@
             </div>
         </div>
 
-        <script src="/build/assets/app-BkPAfGW_.js"></script>
     </body>
 </html>
